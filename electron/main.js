@@ -16,7 +16,7 @@ function loadStore() {
     if (fs.existsSync(storePath)) {
       const data = fs.readFileSync(storePath, 'utf8');
       store = JSON.parse(data);
-      console.log('Store loaded successfully');
+      console.log('Store loaded successfully from:', storePath);
     } else {
       console.log('No existing store found, starting fresh');
     }
@@ -72,21 +72,17 @@ function createWindow() {
       contextIsolation: true,
       preload: path.join(__dirname, 'preload.js')
     },
-    icon: path.join(__dirname, '../public/favicon.ico'),
     backgroundColor: '#1a1a1a',
     autoHideMenuBar: true,
   });
 
   // Load the app
-  win.loadURL(
-    isDev
-      ? 'http://localhost:3000'
-      : `file://${path.join(__dirname, '../build/index.html')}`
-  );
-
-  // Open DevTools in development mode
   if (isDev) {
+    win.loadURL('http://localhost:3000');
     win.webContents.openDevTools();
+  } else {
+    // Use loadFile instead of loadURL for production
+    win.loadFile(path.join(__dirname, '../build/index.html'));
   }
 }
 

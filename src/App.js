@@ -304,6 +304,7 @@ function App() {
                     onChange={(e) => setCurrentEntry({ ...currentEntry, title: e.target.value })}
                     placeholder="Entry title..."
                     className="w-full text-2xl font-bold bg-transparent border-none outline-none mb-4 text-white placeholder-gray-500"
+                    autoFocus
                   />
                   <div className="w-full h-px bg-gradient-to-r from-emerald-500/0 via-emerald-500/50 to-emerald-500/0 mb-4"></div>
                   <textarea
@@ -394,6 +395,7 @@ function App() {
                     onChange={(e) => setCurrentTask({ ...currentTask, title: e.target.value })}
                     placeholder="Task title..."
                     className="w-full text-2xl font-bold bg-transparent border-none outline-none mb-4 text-white placeholder-gray-500"
+                    autoFocus
                   />
                   <div className="w-full h-px bg-gradient-to-r from-red-500/0 via-red-500/50 to-red-500/0 mb-6"></div>
                   
@@ -409,6 +411,7 @@ function App() {
                     <label className="block text-gray-400 text-sm mb-2">Priority</label>
                     <div className="flex gap-2">
                       <button
+                        type="button"
                         onClick={() => setCurrentTask({ ...currentTask, priority: 'high' })}
                         className={`flex-1 py-2 rounded-lg transition-all ${
                           currentTask.priority === 'high'
@@ -419,6 +422,7 @@ function App() {
                         🔴 High
                       </button>
                       <button
+                        type="button"
                         onClick={() => setCurrentTask({ ...currentTask, priority: 'medium' })}
                         className={`flex-1 py-2 rounded-lg transition-all ${
                           currentTask.priority === 'medium'
@@ -429,6 +433,7 @@ function App() {
                         🟠 Medium
                       </button>
                       <button
+                        type="button"
                         onClick={() => setCurrentTask({ ...currentTask, priority: 'low' })}
                         className={`flex-1 py-2 rounded-lg transition-all ${
                           currentTask.priority === 'low'
